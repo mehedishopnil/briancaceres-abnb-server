@@ -55,7 +55,7 @@ async function run() {
     });
 
     // Route to fetch hotel list data
-    app.get('/all-hotels', async (req, res) => {
+    app.get('/all-hotels-list', async (req, res) => {
       try {
         const result = await AllHotelListCollection.find().toArray();
         res.json(result);
@@ -66,7 +66,7 @@ async function run() {
     });
 
     // Route to insert new hotel list data
-    app.post('/all-hotels', async (req, res) => {
+    app.post('/all-hotels-list', async (req, res) => {
       try {
         const newItem = req.body;
         const result = await AllHotelListCollection.insertOne(newItem);
