@@ -88,6 +88,18 @@ async function run() {
       }
     });
 
+    // Route to insert new earnings data
+    app.post('/all-earnings', async (req, res) => {
+      try {
+        const newItem = req.body;
+        const result = await earningListCollection.insertOne(newItem);
+        res.json(result);
+      } catch (error) {
+        console.error('Error inserting into hotel list data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    });
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
